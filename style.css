@@ -1,0 +1,91 @@
+/* === General === */
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+
+/* === Gallery === */
+
+.info {
+    margin-left: 50px;
+}
+
+.gallery_container {
+    max-width: 80%;
+    width: 100%;
+    margin: 50px auto;
+}
+
+.gallery_items {
+    display: flex;
+    flex-basis: 25%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.gallery_items:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.gallery_item {
+    width: 160px;
+    height: 160px;
+    border: 5px solid #383130;
+    border-radius: 50%;
+}
+
+.gallery_item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.gallery_item.first {
+    border-color: red;
+}
+
+
+/* === Medi@ ===*/
+
+@media screen and (max-width: 900px) {
+    .gallery_items {
+        flex-wrap: wrap;
+    }
+    .gallery_item {
+        margin: 0 auto 10px;
+    }
+    .item_wrapper {
+        flex-basis: 50%;
+    }
+    .gallery_item.third {
+        border-color: red;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .item_wrapper {
+        flex-basis: 100%;
+    }
+    .gallery_item.second,
+    .gallery_item.forth {
+        border-color: red;
+    }
+}
+
+
+/* Hover */
+
+.gallery_item:hover {
+    cursor: pointer;
+    border-color: yellow;
+    transition: .2s linear;
+    transform: rotate(45deg)
+}

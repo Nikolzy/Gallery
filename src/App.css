@@ -1,38 +1,234 @@
-.App {
-  text-align: center;
+/* === General === */
+
+body {
+    font-family: 'Lato', sans-serif;
+    margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.info {
+    margin-left: 50px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/* === Gallery === */
+
+.gallery {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.gallery_container {
+    max-width: 80%;
+    width: 100%;
+    margin: 50px auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.gallery_items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.item_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 25%;
+}
+
+.gallery_item {
+    width: 160px;
+    height: 160px;
+    border: 5px solid #383130;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.gallery_item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.item_wrapper:nth-child(4n+1) .gallery_item {
+    border-color: red;
+}
+
+.delete {
+    position: relative;
+    margin-bottom: 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.delete:after,
+.delete:before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 2px;
+    left: 5px;
+    top: 15px;
+    background-color: #000;
+}
+
+.delete:after {
+    transform: rotate(45deg);
+}
+
+.delete:before {
+    transform: rotate(-45deg);
+}
+
+
+/* Button */
+
+.reset_button {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.reset_button button {
+    text-transform: uppercase;
+    line-height: 2;
+    letter-spacing: 1px;
+    padding: 5px 15px;
+    outline: none;
+    border-radius: 5px;
+    color: #000;
+    background-color: #6e6565;
+}
+
+
+/* Modal */
+
+.modal_content {
+    position: relative;
+}
+
+.myModal {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 4;
+    position: fixed;
+}
+
+.current_image img {
+    width: 600px;
+    height: 350px;
+}
+
+.close {
+    position: absolute;
+    margin-bottom: 30px;
+    width: 30px;
+    height: 30px;
+    right: 0;
+    top: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.close:before,
+.close:after {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 2px;
+    right: 5px;
+    top: 14px;
+    background-color: #000;
+}
+
+.close:before {
+    transform: rotate(-45deg);
+}
+
+.close:after {
+    transform: rotate(45deg);
+}
+
+
+/* === Medi@ ===*/
+
+@media screen and (max-width: 900px) {
+    .gallery_items {
+        flex-wrap: wrap;
+    }
+    .gallery_item {
+        margin: 0 auto 10px;
+    }
+    .item_wrapper {
+        flex-basis: 50%;
+    }
+    .item_wrapper:nth-child(2n+1) .gallery_item {
+        border-color: red;
+    }
+    .current_image img {
+        width: 550px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .item_wrapper {
+        flex-basis: 100%;
+    }
+    .item_wrapper:nth-child(n) .gallery_item {
+        border-color: red;
+    }
+    .current_image img {
+        width: 430px;
+        height: 250px;
+    }
+}
+
+
+/* Hover */
+
+.item_wrapper .gallery_item:hover {
+    cursor: pointer;
+    border-color: yellow;
+    transition: .2s linear;
+    transform: rotate(45deg)
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
+.delete:hover:before,
+.delete:hover:after {
+    transition: .2s linear;
+    background-color: red;
+}
+
+.reset_button button:hover {
+    color: #fff;
+    cursor: pointer;
+    background-color: #363333;
+    transition: .2s linear;
+}
+
+.close:hover:after,
+.close:hover:before {
+    cursor: pointer;
+    transition: .2s linear;
+    background-color: red;
 }
