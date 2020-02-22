@@ -1,34 +1,38 @@
-import React, {Component} from 'react';
- 
+import React, { Component } from "react";
+
 class GalleryInfo extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      date: new Date().toUTCString().split(' ').splice(1,4).join(' ')
-    }
-  }
-  componentDidMount(){
+  state = {
+    date: new Date()
+      .toUTCString()
+      .split(" ")
+      .splice(1, 4)
+      .join(" ")
+  };
+
+  componentDidMount() {
     this.timer();
   }
 
-  timer(){
-    setInterval(()=>{
+  timer() {
+    setInterval(() => {
       this.setState({
-        date: new Date().toUTCString().split(' ').splice(1,4).join(' ')
-      })
-    },1000)
-
+        date: new Date()
+          .toUTCString()
+          .split(" ")
+          .splice(1, 4)
+          .join(" ")
+      });
+    }, 1000);
   }
-    
 
-  render() { 
+  render() {
     return (
-    <div>
-      <h3 id="image_count">Count: {this.props.images.length}</h3>
-      <p>{this.state.date}</p>
-    </div>
+      <div>
+        <h3 id="image_count">Count: {this.props.images.length}</h3>
+        <p>{this.state.date}</p>
+      </div>
     );
   }
 }
 
-export default GalleryInfo
+export default GalleryInfo;
